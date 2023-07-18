@@ -101,7 +101,8 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
+          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
       end,
@@ -248,10 +249,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Configure Nvim-Tree ]]
 require("nvim-tree").setup()
-vim.keymap.set('n', '<Leader>e', "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree"})
+vim.keymap.set('n', '<Leader>e', "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree" })
 
 -- [[ Configure LazyGit ]]
-vim.keymap.set('n', '<Leader>gg', require('lazygit').lazygit, {desc = 'Toggle LazyGit'})
+vim.keymap.set('n', '<Leader>gg', require('lazygit').lazygit, { desc = 'Toggle LazyGit' })
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -359,7 +360,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
-vim.keymap.set('n', '<leader>w', '<cmd>update<cr>', { desc ='Write File' })
+vim.keymap.set('n', '<leader>w', '<cmd>update<cr>', { desc = 'Write File' })
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
