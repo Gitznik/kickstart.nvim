@@ -20,6 +20,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.wo.wrap = false
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -248,8 +249,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- [[ Configure Nvim-Tree ]]
-require("nvim-tree").setup()
-vim.keymap.set('n', '<Leader>e', "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree" })
+require("nvim-tree").setup({
+    filters = {
+      git_ignored = false,
+    },
+  })
+vim.keymap.set('n', '<Leader>e', "<cmd>NvimTreeFindFile<cr>", { desc = "Toggle NvimTree" })
 
 -- [[ Configure LazyGit ]]
 vim.keymap.set('n', '<Leader>gg', require('lazygit').lazygit, { desc = 'Toggle LazyGit' })
@@ -404,7 +409,7 @@ local on_attach = function(_, bufnr)
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
+    vim.lsp.buf.format({ timeout_ms = 5000 })
   end, { desc = 'Format current buffer with LSP' })
 end
 
